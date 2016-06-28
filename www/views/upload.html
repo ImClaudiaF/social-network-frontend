@@ -9,15 +9,13 @@
                     <input type="text" class="form-control" id="title" placeholder="Title" ng-model="title" required>
                 </div>
                 <div class="form-group">
-                	<textarea class="form-control" id="desc" placeholder="Description" ng-model="description"></textarea>
-                </div>
-                <div class="form-group">
                     <input type="text" class="form-control" id="tagusers" placeholder="Tag a friend" ng-model="tag">
                 </div>
                 <div class="form-group">
                     <input type="file" class="form-control" id="file" ng-model="file">
                 </div>
                 <button type="button" class="btn btn-primary" ng-disabled="uploadF.$invalid" ng-click="upload.uploadFile()">Upload!</button>
+                <button type="button" class="btn btn-primary" ng-click="profile.logout()">Log Out!</button>
             </form>
         </div>
     </div>
