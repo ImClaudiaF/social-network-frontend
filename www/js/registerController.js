@@ -14,7 +14,7 @@ app.controller('registerController', function($http,$scope, $state){
 				console.log(data);
 				if(data.status==200){
 					console.log(data.info.token);
-					$state.transitionTo('home.profile');
+					$state.transitionTo('home.login');
 				}
 				else
 					$scope.message = "Usuario y/o correo ya existe"
