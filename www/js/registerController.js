@@ -1,4 +1,4 @@
-app.controller('registerController', function($http,$scope){
+app.controller('registerController', function($http,$scope, $state){
 	$scope.register = {
 		registerInfo: function () {
 			var params = {
@@ -9,7 +9,7 @@ app.controller('registerController', function($http,$scope){
 				password: $scope.password
 			};
 			console.log(params);		
-			$http.post("http://192.168.1.100:10000/register", params)
+			$http.post("http://192.168.1.137:10000/register", params)
 			.success(function(data){
 				console.log(data);
 				if(data.status==200){
