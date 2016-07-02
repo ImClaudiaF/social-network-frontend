@@ -19,7 +19,7 @@ app.controller('uploadController', function($http, $scope){
 			fd.append('file', x.files[0]);
 			//fd.append('type', x.files[0].type);
 			$http({
-				url: 'http://192.168.1.137:10000/api/passfile',
+				url: 'http://192.168.1.100:10000/api/passfile',
 				method: 'POST',
 				headers: {
 					"content-type": undefined

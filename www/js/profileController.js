@@ -4,7 +4,7 @@ app.controller('profileController', function($http, $scope, $state){
 			username: localStorage.getItem('username'),
 			token: localStorage.getItem('token')
 		}
-		$http.get("http://192.168.1.137:10000/info/"+params.username+"/"+params.token)
+		$http.get("http://192.168.1.100:10000/info/"+params.username+"/"+params.token)
 		.success(function(data){
 			console.log(data);
 			$scope.name=data.info.user_name;

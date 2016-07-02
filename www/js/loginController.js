@@ -11,7 +11,7 @@ app.controller('loginController', function($http, $scope, $state){
 				password: $scope.password
 			};
 			console.log(params);
-			$http.post("http://192.168.1.137:10000/login", params)
+			$http.post("http://192.168.1.100:10000/login", params)
 			.success(function(data){
 				console.log(data);
 				if(data.status==200){
