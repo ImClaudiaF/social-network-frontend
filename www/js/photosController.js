@@ -1,4 +1,5 @@
 var div = document.getElementById('div');
+var id;
 app.controller('photosController', function($http, $scope, $state, $sce){
 	$scope.loadP = function(){
 		$http.get("http://192.168.1.100:10000/info_publish/0")
@@ -16,6 +17,27 @@ app.controller('photosController', function($http, $scope, $state, $sce){
   					$scope.audioUrl = $sce.trustAsResourceUrl(audioUrl);
   				}
 			}
+			/*$http.get("http://192.168.1.100:10000/likes")
+			.success(function(data){
+				console.log(data);			
+			});*/
 		});
-	}
+	},
+	$scope.likes = {
+		like: function (id) {
+			var params = {
+				id: id,
+				token: localStorage.getItem('token')
+			};
+			// console.log(params);
+			$http.post("http://192.168.1.100:10000/likes", params)
+			.success(function(data){
+				console.log(data);
+				$scope.lik = data.quantity;
+				var p = document.createElement('p');
+				p.innerHTML=data.quantity;
+				
+			});	
+		}
+	}	
 });
