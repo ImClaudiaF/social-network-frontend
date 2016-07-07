@@ -1,0 +1,50 @@
+<div ng-controller="photosController" ng-init="loadP()">
+	<div ng-repeat="picture in pictures">
+			<div class="panel panel-info" ng-if="picture.publish_type=='image/jpeg' || picture.publish_type=='image/gif' || picture.publish_type=='image/png'">
+	  			<div class="panel-heading" id="imagen">
+	  				<h4>{{picture.publish_user}}</h4>
+	  			</div>
+	  			<div class="panel-body">
+						<img class="img-responsive" ng-src="http://192.168.1.137:10000/{{picture.publish_url}}/{{picture.publish_filename}}">
+				</div>
+				<div class="panel-body">
+						<p>{{picture.publish_title}}</p>
+						<button type="button" class="btn btn-danger" ng-click="likes.like(picture.publish_id)">
+	  						<span  class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+						</button>
+						<!-- <p>{{lik}}</p> -->
+				</div>
+			</div>
+
+			<div class="panel panel-info" ng-if="picture.publish_type=='video/mp4' || picture.publish_type=='video/3gpp'">
+				<!-- <div ng-repeat="media in mediaUrl"> -->
+		  			<div class="panel-heading" id="video">
+		  				<h4>{{picture.publish_user}}</h4>
+		  			</div>
+		  			<div class="panel-body">
+							<video controls ng-src="{{mediaUrl}}" style="width: 100%; height: auto">
+							</video>
+					</div>
+					<div class="panel-body">
+							<p>{{picture.publish_title}}</p>
+							<p>{{media}}</p>
+					</div>
+				<!-- </div> -->
+			</div>
+
+			<div class="panel panel-info" ng-if="picture.publish_type=='audio/mp3'">
+	  			<div class="panel-heading" id="video">
+	  				<h4>{{picture.publish_user}}</h4>
+	  			</div>
+	  			<div class="panel-body">
+						<audio controls ng-src="{{mediaUrl}}">
+						</audio>
+				</div>
+				<div class="panel-body">
+						<p>{{picture.publish_title}}</p>
+						<p>{{mediaUrl}}</p>
+				</div>
+			</div>
+	</div>
+</div>
+<script type="text/javascript" src="../js/photosController.js"></script>
