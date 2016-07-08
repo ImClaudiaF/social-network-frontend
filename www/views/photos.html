@@ -5,14 +5,14 @@
 	  				<h4>{{picture.publish_user}}</h4>
 	  			</div>
 	  			<div class="panel-body">
-						<img class="img-responsive" ng-src="http://192.168.1.100:10000/{{picture.publish_url}}/{{picture.publish_filename}}">
+						<img class="img-responsive" ng-src="{{picture.mediaUrl}}">
 				</div>
 				<div class="panel-body">
 						<p>{{picture.publish_title}}</p>
 						<button type="button" class="btn btn-danger" ng-click="likes.like(picture.publish_id)">
 	  						<span  class="glyphicon glyphicon-heart" aria-hidden="true"></span>
 						</button>
-						<!-- <p>{{lik}}</p> -->
+						<p>{{picture.likes}}</p>
 				</div>
 			</div>
 
@@ -21,24 +21,32 @@
 	  				<h4>{{picture.publish_user}}</h4>
 	  			</div>
 	  			<div class="panel-body">
-						<video controls ng-src="{{videoUrl}}" style="width: 100%; height: auto">
+						<video controls ng-src="{{picture.mediaUrl}}" style="width: 100%; height: auto">
 						</video>
 				</div>
 				<div class="panel-body">
 						<p>{{picture.publish_title}}</p>
+						<button type="button" class="btn btn-danger" ng-click="likes.like(picture.publish_id)">
+	  						<span  class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+						</button>
+						<p>{{picture.likes}}</p>
 				</div>
 			</div>
 
-			<div class="panel panel-info" ng-if="picture.publish_type=='audio/mp3'">
+			<div class="panel panel-info" ng-if="picture.publish_type=='audio/mp3'||picture.publish_type=='audio/x-m4a'">
 	  			<div class="panel-heading" id="video">
 	  				<h4>{{picture.publish_user}}</h4>
 	  			</div>
 	  			<div class="panel-body">
-						<audio controls ng-src="{{audioUrl}}">
+						<audio controls ng-src="{{picture.mediaUrl}}">
 						</audio>
 				</div>
 				<div class="panel-body">
 						<p>{{picture.publish_title}}</p>
+						<button type="button" class="btn btn-danger" ng-click="likes.like(picture.publish_id)">
+	  						<span  class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+						</button>
+						<p>{{picture.likes}}</p>
 				</div>
 			</div>
 	</div>
