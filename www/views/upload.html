@@ -14,8 +14,14 @@
                 <div class="form-group">
                     <input type="file" class="form-control" id="file" ng-model="file">
                 </div>
+                 <div class="checkbox">
+                    <label>
+                      <input type="checkbox" id="geo" ng-model="enableGeo" ng-click="geo.getGeo()"> Enable Geolocation!
+                    </label>
+                </div>
                 <button type="button" class="btn btn-primary" ng-disabled="uploadF.$invalid" ng-click="upload.uploadFile()">Upload!</button>
                 <button type="button" class="btn btn-primary" ng-click="profile.logout()">Log Out!</button>
+                <!-- No va boton de logout, cambiar pot el de tomar la foto -->
             </form>
         </div>
     </div>
