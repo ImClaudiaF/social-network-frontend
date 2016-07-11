@@ -1,0 +1,14 @@
+<div ng-controller="takePicController" class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"></h3>
+        </div>
+        <div class="panel-body">
+            <form class="form-inline">
+                <button type="button" class="btn btn-primary" ng-click="takePicture()">Take Picture!</button>
+                <img ng-src="{{myImg.src}}" alt="" class="img-responsive"></img>
+                <!-- No va boton de logout, cambiar por el de tomar la foto -->
+            </form>
+        </div>
+    </div>
+</div>

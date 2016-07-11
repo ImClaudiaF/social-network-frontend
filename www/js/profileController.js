@@ -28,6 +28,9 @@ app.controller('profileController', function($http, $scope, $state, $sce){
 		},
 		photos: function(){
 			$state.transitionTo('home.photos');
+		},
+		takePic: function(){
+			$state.transitionTo('home.takePic');
 		}
 	}
 });

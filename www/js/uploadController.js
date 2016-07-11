@@ -35,7 +35,7 @@ app.controller('uploadController', function($http, $scope){
 			   	}
 			}					
 		}
-	},
+	};
 	$scope.upload = {
 		uploadFile: function(){
 			var x = document.getElementById('file');
@@ -61,12 +61,51 @@ app.controller('uploadController', function($http, $scope){
 			})
 			.success(function(data){
 				console.log(data);
+				//transicion
 			});
 		},
-		logout: function(){
-			localStorage.removeItem('username');
-			localStorage.removeItem('token');
-			$state.transitionTo('home.login');
+		takePicture: function(){
+			console.log('antes');
+			navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+			    destinationType: Camera.DestinationType.DATA_URL
+			});
+			 console.log('despues');
+
+			function onSuccess(imageData) {
+			    var image = document.getElementById('myImage');
+			    image.src = "data:image/jpeg;base64," + imageData;
+			}
+
+			function onFail(message) {
+			    alert('Failed because: ' + message);
+			}
+
+
+			// console.log('antes');
+			// navigator.camera.getPicture(onSuccess, onFail, {
+	  //                quality: 50,
+	  //                destinationType: Camera.DestinationType.DATA_URL
+	  //           });
+
+			// console.log('despues');
+
+			// $scope.myImg = {
+   //          	src: ""
+   //      	};
+
+	  //       function onSuccess(imageData) {
+	  //            $scope.myImg.src = "data:image/jpeg;base64," + imageData;     
+	  //            console.log($scope.myImg.src);        
+	  //            $scope.$apply();
+	  //       }
+
+	  //       function onFail(message) {
+	  //           alert('Failed because: ' + message);
+	  //       }
+
+	            
+	        
+
 		}
 	}
 })

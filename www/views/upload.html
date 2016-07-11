@@ -1,4 +1,4 @@
-<div ng-controller="uploadController" class="container" ng-init="geolocation()">
+<div ng-controller="uploadController" class="container">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title"></h3>
@@ -20,8 +20,8 @@
                     </label>
                 </div>
                 <button type="button" class="btn btn-primary" ng-disabled="uploadF.$invalid" ng-click="upload.uploadFile()">Upload!</button>
-                <button type="button" class="btn btn-primary" ng-click="profile.logout()">Log Out!</button>
-                <!-- No va boton de logout, cambiar pot el de tomar la foto -->
+                <button type="button" class="btn btn-primary" ng-click="upload.takePicture()">Take Picture!</button>
+                <!-- No va boton de logout, cambiar por el de tomar la foto -->
             </form>
         </div>
     </div>
