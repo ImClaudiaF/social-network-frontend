@@ -11,7 +11,7 @@
                 <div class="form-group">
                     <input type="password" class="form-control" id="password" placeholder="password" ng-model="password" required>
                 </div>
-                <button type="button" class="btn btn-primary" ng-disabled="login.$invalid" ng-click="loginUser.loginInfo()">Log In!</button>
+                <button type="button" class="btn btn-primary" ng-disabled="login.$invalid" ng-click="loginUser()">Log In!</button>
             </form><br>
             <button type="button" class="btn btn-info btn-xs" ><a ui-sref="home.register">Register!</a></button>
             <h3>{{message}}</h3>

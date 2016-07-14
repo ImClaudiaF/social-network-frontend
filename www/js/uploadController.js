@@ -1,5 +1,5 @@
 var blob;
-app.controller('uploadController', function($http, $scope) {
+app.controller('uploadController', function($http, $scope, $state) {
     var geo;
     $scope.getGeo = function() {
         if ($scope.enableGeo) {
@@ -11,7 +11,6 @@ app.controller('uploadController', function($http, $scope) {
 
             function onSuccess(position) {
                 geo = position.coords.latitude + ', ' + position.coords.longitude;
-                //alert(geo);
             };
 
             function onError(error) {
@@ -42,6 +41,10 @@ app.controller('uploadController', function($http, $scope) {
             })
             .success(function(data) {
                 console.log(data);
+                $scope.status = data.status;
+                setTimeout(function() {
+                    $state.transitionTo('home.profile');
+                }, 3000);
             });
     }
     $scope.takePicture = function() {
@@ -54,16 +57,27 @@ app.controller('uploadController', function($http, $scope) {
             src: ""
         };
 
+        function dataURLtoBlob(dataurl) {
+            var arr = dataurl.split(',');
+            var mime = arr[0].match(/:(.*?);/)[1];
+            var bstr = atob(arr[1]);
+            var n = bstr.length;
+            var u8arr = new Uint8Array(n);
+
+            while (n--) {
+                u8arr[n] = bstr.charCodeAt(n);
+            }
+            return new Blob([u8arr], {
+                type: mime
+            });
+        }
 
         function onSuccess(imageData) {
             $scope.myImg.src = "data:image/jpeg;base64," + imageData;
-            $scope.pp = imageData;
 
-            var imageBase64 = imageData;
-            blob = new Blob([imageBase64], {
-                type: 'image/jpeg'
-            });
-            console.log(blob);
+            var imageBase64 = "data:image/jpeg;base64," + imageData;
+
+            var blob = dataURLtoBlob(imageBase64);
 
             var fd = new FormData();
 
@@ -86,20 +100,11 @@ app.controller('uploadController', function($http, $scope) {
                 })
                 .success(function(data) {
                     console.log(data);
+                    $scope.status = data.status;
+                    setTimeout(function() {
+                        $state.transitionTo('home.profile');
+                    }, 3000);
                 });
-
-            // var contentType = 'image/jpeg';
-            // var b64Data = imageData;
-
-            // var blob = b64toBlob(b64Data, contentType);
-            // var blobUrl = URL.createObjectURL(blob);
-            // console.log(blob);
-            // console.log(blobUrl);
-
-            // var img = document.createElement('img');
-            // img.src = blobUrl;
-            // document.body.appendChild(img);
-
 
             $scope.$apply();
         };

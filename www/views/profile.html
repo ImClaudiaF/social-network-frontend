@@ -1,51 +1,51 @@
 <div ng-controller="profileController" ng-init="profileInfo()">
-<h4>{{name + ' ' + lastname}}</h4>
-<h3>{{username}}</h3>
+    <h4>{{name + ' ' + lastname}}</h4>
+    <h3>{{username}}</h3>
+    <div ng-repeat="picture in pictures">
+        <div class="panel panel-info" ng-if="picture.publish_type=='image/jpeg' || picture.publish_type=='image/gif' || picture.publish_type=='image/png'">
 
+            <div class="panel-body">
+                <img class="img-responsive" ng-src="{{picture.mediaUrl}}">
+            </div>
+            <div class="panel-body">
+                <p style="display: inline">{{picture.publish_title}}</p>
+                <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color:red; margin-left: 78%"></span>
+                <p style="display: inline; color:red">{{picture.likes}}</p>
+            </div>
+        </div>
 
-
-	<div ng-repeat="picture in pictures">
-			<div class="panel panel-info" ng-if="picture.publish_type=='image/jpeg' || picture.publish_type=='image/gif' || picture.publish_type=='image/png'">
-	  			
-	  			<div class="panel-body">
-						<img class="img-responsive" ng-src="{{picture.mediaUrl}}">
-				</div>
-				<div class="panel-body">
-						<p style="display: inline">{{picture.publish_title}}</p>
-	  					<span  class="glyphicon glyphicon-heart" aria-hidden="true" style="color:red; margin-left: 78%"></span>
-	  					<p style="display: inline; color:red">{{picture.likes}}</p>
-				</div>
-			</div>
-
-			<div class="panel panel-info" ng-if="picture.publish_type=='video/mp4' || picture.publish_type=='video/3gpp'">
-	  			<div class="panel-body">
-						<video controls ng-src="{{picture.mediaUrl}}" style="width: 100%; height: auto">
+        <div class="panel panel-info" ng-if="picture.publish_type=='video/mp4' || picture.publish_type=='video/3gpp'">
+            <div class="panel-body">
+                <video controls ng-src="{{picture.mediaUrl}}" style="width: 100%; height: auto">
 						</video>
-				</div>
-				<div class="panel-body">
-						<p style="display: inline">{{picture.publish_title}}</p>
-	  					<span  class="glyphicon glyphicon-heart" aria-hidden="true" style="color:red; margin-left: 78%"></span>
-	  					<p style="display: inline; color:red">{{picture.likes}}</p>
-				</div>
-			</div>
+            </div>
+            <div class="panel-body">
+                <p style="display: inline">{{picture.publish_title}}</p>
+                <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color:red; margin-left: 78%"></span>
+                <p style="display: inline; color:red">{{picture.likes}}</p>
+            </div>
+        </div>
 
-			<div class="panel panel-info" ng-if="picture.publish_type=='audio/mp3'||picture.publish_type=='audio/x-m4a'">
-	  			<div class="panel-body">
-						<audio controls ng-src="{{picture.mediaUrl}}">
+        <div class="panel panel-info" ng-if="picture.publish_type=='audio/mp3'||picture.publish_type=='audio/x-m4a'">
+            <div class="panel-body">
+                <audio controls ng-src="{{picture.mediaUrl}}">
 						</audio>
-				</div>
-				<div class="panel-body">
-						<p style="display: inline">{{picture.publish_title}}</p>
-	  					<span  class="glyphicon glyphicon-heart" aria-hidden="true" style="color:red; margin-left: 78%"></span>
-	  					<p style="display: inline; color:red">{{picture.likes}}</p>
-				</div>
-			</div>
-	</div>
+            </div>
+            <div class="panel-body">
+                <p style="display: inline">{{picture.publish_title}}</p>
+                <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color:red; margin-left: 78%"></span>
+                <p style="display: inline; color:red">{{picture.likes}}</p>
+            </div>
+        </div>
+    </div>
 
 
 
-<button type="button" class="btn btn-primary" ng-click="profile.upload()">Upload!</button>
-<button type="button" class="btn btn-primary" ng-click="profile.logout()">Log Out!</button>
-<button type="button" class="btn btn-primary" ng-click="profile.photos()">Photos!</button>
-<button type="button" class="btn btn-primary" ng-click="profile.takePic()">Take Picture!</button>
+    <button type="button" class="btn btn-primary" ng-click="upload()">Upload!</button>
+    <button type="button" class="btn btn-primary" ng-click="logout()">Log Out!</button>
+    <button type="button" class="btn btn-primary" ng-click="photos()">Photos!</button>
+    <!-- <button type="button" class="btn btn-primary" ng-click="profile.takePic()">Take Picture!</button> -->
+
 </div>
+
+<!-- <div ui-view></div> -->

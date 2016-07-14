@@ -21,11 +21,11 @@
                 </div>
                 <button type="button" class="btn btn-primary" ng-disabled="uploadF.$invalid" ng-click="uploadFile()">Upload!</button>
                 <button type="button" class="btn btn-primary" ng-click="takePicture()">Take Picture!</button>
-                <!-- <button type="button" class="btn btn-primary" ng-click="uploadTakenPicture()">upload Take Picture!</button> -->
-                <!-- No va boton de logout, cambiar por el de tomar la foto -->
             </form>
         </div>
     </div>
-    <img ng-src="{{myImg.src}}" alt="" class="img-responsive"></img>
-    <p>{{pp}}</p>
+    <div ng-if="status == 200">
+        <div class="alert alert-info" role="alert">Successfully published!</div>
+    </div>
+    <img ng-src="{{myImg.src}}" alt="" class="img-responsive"></img
 </div>
