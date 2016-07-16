@@ -1,7 +1,9 @@
 var blob;
+var fd = new FormData();
+
 app.controller('uploadController', function($http, $scope, $state) {
     var geo;
-    $scope.flagO = function(){
+    $scope.flagO = function() {
         flag = false;
         console.log(flag);
     }
@@ -56,7 +58,6 @@ app.controller('uploadController', function($http, $scope, $state) {
             quality: 50,
             destinationType: Camera.DestinationType.DATA_URL
         });
-
         $scope.myImg = {
             src: ""
         };
@@ -80,35 +81,23 @@ app.controller('uploadController', function($http, $scope, $state) {
             $scope.myImg.src = "data:image/jpeg;base64," + imageData;
 
             var imageBase64 = "data:image/jpeg;base64," + imageData;
-
             var blob = dataURLtoBlob(imageBase64);
 
-            var fd = new FormData();
+            fd.delete('username');
+            fd.delete('title');
+            fd.delete('tag');
+            fd.delete('geolocation');
+            fd.delete('file');
 
             if ($scope.tag == undefined)
                 $scope.tag = "";
             if (geo == undefined)
                 geo = "";
             fd.append('username', localStorage.getItem('username'));
-            fd.append('title', $scope.title);
+            // fd.append('title', $scope.title);
             fd.append('tag', $scope.tag);
             fd.append('geolocation', geo);
             fd.append('file', blob);
-            $http({
-                    url: 'http://192.168.1.137:10000/api/passfile',
-                    method: 'POST',
-                    headers: {
-                        "content-type": undefined
-                    },
-                    data: fd
-                })
-                .success(function(data) {
-                    console.log(data);
-                    $scope.status = data.status;
-                    setTimeout(function() {
-                        $state.transitionTo('home.home2.profile');
-                    }, 2000);
-                });
 
             $scope.$apply();
         };
@@ -116,5 +105,24 @@ app.controller('uploadController', function($http, $scope, $state) {
         function onFail(message) {
             alert('Failed because: ' + message);
         }
+    }
+    $scope.publish = function() {
+        fd.append('title', $scope.title);
+        $http({
+                url: 'http://192.168.1.137:10000/api/passfile',
+                method: 'POST',
+                headers: {
+                    "content-type": undefined
+                },
+                data: fd
+            })
+            .success(function(data) {
+                console.log(data);
+                $scope.status = data.status;
+                setTimeout(function() {
+                    $state.transitionTo('home.home2.profile');
+                }, 2000);
+            });
+        //$scope.$apply();
     }
 })

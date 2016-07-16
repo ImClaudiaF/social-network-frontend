@@ -1,46 +1,47 @@
-<div class="panel-body"> 
+<div class="panel-body">
     <div ng-controller="profileController" ng-init="profileInfo()">
-        <h4>{{name + ' ' + lastname}}</h4>
-        <h3>{{username}}</h3>
-        <div ng-repeat="picture in pictures">
-            <div class="panel panel-info" ng-if="picture.publish_type=='image/jpeg' || picture.publish_type=='image/gif' || picture.publish_type=='image/png'">
+        <button type="button" class="btn btn-primary btn-xs" ng-click="logout()" style="float: right">Log Out!</button>
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <h3>{{name + ' ' + lastname}}</h4>
+                <h4>{{username}}</h3>
+                <h5 style="float: right; border-style: solid; border-color: #a8d9f7; padding: 5px; border-width: 1px; border-radius: 5px">{{cant}} photos</h5>
+            </div>
+        </div>
 
+        <div ng-repeat="upload in uploads">
+            <div class="panel panel-info" ng-if="upload.publish_type=='image/jpeg' || upload.publish_type=='image/gif' || upload.publish_type=='image/png'">
                 <div class="panel-body">
-                    <img class="img-responsive" ng-src="{{picture.mediaUrl}}">
-                </div>
-                <div class="panel-body">
-                    <p style="display: inline">{{picture.publish_title}}</p>
-                    <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color:red; margin-left: 75%"></span>
-                    <p style="display: inline; color:red">{{picture.likes}}</p>
+                    <h6> {{upload.publish_location}}</h6><br>
+                    <img class="img-responsive" ng-src="{{upload.mediaUrl}}"><br>
+                    <span class="glyphicon glyphicon-heart" aria-hidden="true" ng-click="likes(upload.publish_id)" style="color:red; font-size: 1.2em">{{upload.likes}}</span>
+                    <h6 style="float: right"> {{upload.publish_date}}</h6>
+                    <h5>{{upload.publish_title}}</h5>
                 </div>
             </div>
 
-            <div class="panel panel-info" ng-if="picture.publish_type=='video/mp4' || picture.publish_type=='video/3gpp'">
+            <div class="panel panel-info" ng-if="upload.publish_type=='video/mp4' || upload.publish_type=='video/3gpp'">
                 <div class="panel-body">
-                    <video controls ng-src="{{picture.mediaUrl}}" style="width: 100%; height: auto">
-    						</video>
-                </div>
-                <div class="panel-body">
-                    <p style="display: inline">{{picture.publish_title}}</p>
-                    <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color:red; margin-left: 75%"></span>
-                    <p style="display: inline; color:red">{{picture.likes}}</p>
+                    <h6> {{upload.publish_location}}</h6><br>
+                    <video controls ng-src="{{upload.mediaUrl}}" style="width: 100%; height: auto"></video><br>
+                    <span class="glyphicon glyphicon-heart" aria-hidden="true" ng-click="likes(upload.publish_id)" style="color:red; font-size: 1.2em">{{upload.likes}}</span>
+                    <h6 style="float: right"> {{upload.publish_date}}</h6>
+                    <h5>{{upload.publish_title}}</h5>
                 </div>
             </div>
 
-            <div class="panel panel-info" ng-if="picture.publish_type=='audio/mp3'||picture.publish_type=='audio/x-m4a'">
+            <div class="panel panel-info" ng-if="upload.publish_type=='audio/mp3'||upload.publish_type=='audio/x-m4a'">
                 <div class="panel-body">
-                    <audio controls ng-src="{{picture.mediaUrl}}">
-    						</audio>
-                </div>
-                <div class="panel-body">
-                    <p style="display: inline">{{picture.publish_title}}</p>
-                    <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color:red; margin-left: 75%"></span>
-                    <p style="display: inline; color:red">{{picture.likes}}</p>
+                    <h6> {{upload.publish_location}}</h6><br>
+                    <audio controls ng-src="{{upload.mediaUrl}}"></audio><br>
+                    <span class="glyphicon glyphicon-heart" aria-hidden="true" ng-click="likes(upload.publish_id)" style="color:red; font-size: 1.2em">{{upload.likes}}</span>
+                    <h6 style="float: right"> {{upload.publish_date}}</h6>
+                    <h5>{{upload.publish_title}}</h5>
                 </div>
             </div>
         </div>
         <!-- Este boton no va aca -->
-        <button type="button" class="btn btn-primary" ng-click="logout()">Log Out!</button>
+        <!-- <button type="button" class="btn btn-primary" ng-click="logout()">Log Out!</button> -->
         <!-- Este boton no va aca  -->
     </div>
 </div>

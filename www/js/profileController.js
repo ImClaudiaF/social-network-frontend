@@ -11,8 +11,9 @@ app.controller('profileController', function($http, $scope, $state, $sce) {
                 console.log(data);
                 $scope.name = data.info.user_name;
                 $scope.lastname = data.info.user_lastname;
+                $scope.cant = data.pictures.length;
                 $scope.username = localStorage.getItem('username');
-                $scope.pictures = data.pictures.map(function(el) {
+                $scope.uploads = data.pictures.map(function(el) {
                     el.mediaUrl = "http://192.168.1.137:10000/" + el.publish_url + "/" + el.publish_filename;
                     el.mediaUrl = $sce.trustAsResourceUrl(el.mediaUrl);
                     return el;
