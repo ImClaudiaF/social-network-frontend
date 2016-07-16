@@ -1,45 +1,63 @@
 <div class="panel-body">
-	<div ng-controller="photosController" ng-init="loadP()">
-		<div ng-repeat="upload in uploads">
-				<div class="panel panel-info" ng-if="upload.publish_type=='image/jpeg' || upload.publish_type=='image/gif' || upload.publish_type=='image/png'">
-		  			<div class="panel-heading" id="imagen">
-		  				<h4>{{upload.publish_user}}</h4>
-		  			</div>
-		  			<div class="panel-body">
-		  				<h6> {{upload.publish_location}}</h6><br>
-						<img class="img-responsive" ng-src="{{upload.mediaUrl}}"><br>
-						<span  class="glyphicon glyphicon-heart" aria-hidden="true" ng-click="likes(upload.publish_id)" style="color:red; font-size: 1.2em">{{upload.likes}}</span>
-						<h6 style="float: right"> {{upload.publish_date}}</h6>
-						<h5>{{upload.publish_title}}</h5>
-					</div>
-				</div>
+    <div ng-controller="photosController" ng-init="loadP()">
+        <div ng-repeat="upload in uploads">
+            <div class="panel panel-info" ng-if="upload.publish_type=='image/jpeg' || upload.publish_type=='image/gif' || upload.publish_type=='image/png'">
+                <div class="panel-heading" id="imagen">
+                    <h4>{{upload.publish_user}}</h4>
+                </div>
+                <div class="panel-body">
+                    <h6> {{upload.publish_location}}</h6><br>
+                    <img class="img-responsive" ng-src="{{upload.mediaUrl}}"><br>
+                    <div ng-if="upload.likes_user==0">
+                        <span class="glyphicon glyphicon-heart-empty" aria-hidden="true" ng-click="likes(upload.publish_id)" style="font-size: 1.3em">{{upload.likes}}</span>
+                        <h6 style="float: right"> {{upload.publish_date}}</h6>
+                    </div>
+                    <div ng-if="upload.likes_user==1">
+                        <span class="glyphicon glyphicon-heart" aria-hidden="true" ng-click="likes(upload.publish_id)" style="color:red; font-size: 1.3em">{{upload.likes}}</span>
+                        <h6 style="float: right"> {{upload.publish_date}}</h6>
+                    </div>
+                    <h5><b>{{upload.publish_title}}</b></h5>
+                </div>
+            </div>
 
-				<div class="panel panel-info" ng-if="upload.publish_type=='video/mp4' || upload.publish_type=='video/3gpp'">
-		  			<div class="panel-heading" id="video">
-		  				<h4>{{upload.publish_user}}</h4>
-		  			</div>
-		  			<div class="panel-body">
-		  				<h6> {{upload.publish_location}}</h6><br>
-						<video controls ng-src="{{upload.mediaUrl}}" style="width: 100%; height: auto"></video><br>
-						<span  class="glyphicon glyphicon-heart" aria-hidden="true" ng-click="likes(upload.publish_id)" style="color:red; font-size: 1.2em">{{upload.likes}}</span>
-						<h6 style="float: right"> {{upload.publish_date}}</h6>
-						<h5>{{upload.publish_title}}</h5>
-					</div>
-				</div>
+            <div class="panel panel-info" ng-if="upload.publish_type=='video/mp4' || upload.publish_type=='video/3gpp'">
+                <div class="panel-heading" id="video">
+                    <h4>{{upload.publish_user}}</h4>
+                </div>
+                <div class="panel-body">
+                    <h6> {{upload.publish_location}}</h6><br>
+                    <video controls ng-src="{{upload.mediaUrl}}" style="width: 100%; height: auto"></video><br>
+                    <div ng-if="upload.likes_user==0">
+                        <span class="glyphicon glyphicon-heart-empty" aria-hidden="true" ng-click="likes(upload.publish_id)" style="font-size: 1.3em">{{upload.likes}}</span>
+                        <h6 style="float: right"> {{upload.publish_date}}</h6>
+                    </div>
+                    <div ng-if="upload.likes_user==1">
+                        <span class="glyphicon glyphicon-heart" aria-hidden="true" ng-click="likes(upload.publish_id)" style="color:red; font-size: 1.3em">{{upload.likes}}</span>
+                        <h6 style="float: right"> {{upload.publish_date}}</h6>
+                    </div>
+                    <h5><b>{{upload.publish_title}}</b></h5>
+                </div>
+            </div>
 
-				<div class="panel panel-info" ng-if="upload.publish_type=='audio/mp3'||upload.publish_type=='audio/x-m4a'">
-		  			<div class="panel-heading" id="video">
-		  				<h4>{{upload.publish_user}}</h4>
-		  			</div>
-		  			<div class="panel-body">
-		  				<h6> {{upload.publish_location}}</h6><br>
-						<audio controls ng-src="{{upload.mediaUrl}}"></audio><br>
-						<span  class="glyphicon glyphicon-heart" aria-hidden="true" ng-click="likes(upload.publish_id)" style="color:red; font-size: 1.2em">{{upload.likes}}</span>
-						<h6 style="float: right"> {{upload.publish_date}}</h6>
-						<h5>{{upload.publish_title}}</h5>
-					</div>
-				</div>
-		</div>
-	</div>
+            <div class="panel panel-info" ng-if="upload.publish_type=='audio/mp3'||upload.publish_type=='audio/x-m4a'">
+                <div class="panel-heading" id="video">
+                    <h4>{{upload.publish_user}}</h4>
+                </div>
+                <div class="panel-body">
+                    <h6> {{upload.publish_location}}</h6><br>
+                    <audio controls ng-src="{{upload.mediaUrl}}"></audio><br>
+                    <div ng-if="upload.likes_user==0">
+                        <span class="glyphicon glyphicon-heart-empty" aria-hidden="true" ng-click="likes(upload.publish_id)" style="font-size: 1.3em">{{upload.likes}}</span>
+                        <h6 style="float: right"> {{upload.publish_date}}</h6>
+                    </div>
+                    <div ng-if="upload.likes_user==1">
+                        <span class="glyphicon glyphicon-heart" aria-hidden="true" ng-click="likes(upload.publish_id)" style="color:red; font-size: 1.3em">{{upload.likes}}</span>
+                        <h6 style="float: right"> {{upload.publish_date}}</h6>
+                    </div>
+                    <h5><b>{{upload.publish_title}}</b></h5>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script type="text/javascript" src="../js/photosController.js"></script>
