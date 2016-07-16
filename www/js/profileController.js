@@ -1,5 +1,7 @@
 app.controller('profileController', function($http, $scope, $state, $sce) {
     $scope.profileInfo = function() {
+        flag = false;
+        console.log(flag);
         var params = {
             username: localStorage.getItem('username'),
             token: localStorage.getItem('token')
@@ -17,16 +19,9 @@ app.controller('profileController', function($http, $scope, $state, $sce) {
                 });
             });
     };
-    $scope.upload = function() {
-        $state.transitionTo('home.home2.upload');
-    };
     $scope.logout = function() {
         localStorage.removeItem('username');
         localStorage.removeItem('token');
         $state.transitionTo('home.login');
     };
-    $scope.photos = function() {
-        $state.transitionTo('home.home2.photos');
-    }
-
 });

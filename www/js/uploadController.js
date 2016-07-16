@@ -1,6 +1,10 @@
 var blob;
 app.controller('uploadController', function($http, $scope, $state) {
     var geo;
+    $scope.flagO = function(){
+        flag = false;
+        console.log(flag);
+    }
     $scope.getGeo = function() {
         if ($scope.enableGeo) {
             var options = {
@@ -43,8 +47,8 @@ app.controller('uploadController', function($http, $scope, $state) {
                 console.log(data);
                 $scope.status = data.status;
                 setTimeout(function() {
-                    $state.transitionTo('home.profile');
-                }, 3000);
+                    $state.transitionTo('home.home2.profile');
+                }, 2000);
             });
     }
     $scope.takePicture = function() {
@@ -102,8 +106,8 @@ app.controller('uploadController', function($http, $scope, $state) {
                     console.log(data);
                     $scope.status = data.status;
                     setTimeout(function() {
-                        $state.transitionTo('home.profile');
-                    }, 3000);
+                        $state.transitionTo('home.home2.profile');
+                    }, 2000);
                 });
 
             $scope.$apply();

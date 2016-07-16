@@ -11,11 +11,16 @@ app.controller('registerController', function($http, $scope, $state) {
         $http.post("http://192.168.1.137:10000/register", params)
             .success(function(data) {
                 console.log(data);
+                $scope.status = data.status;
                 if (data.status == 200) {
                     console.log(data.info.token);
-                    $state.transitionTo('home.login');
-                } else
-                    $scope.message = "Usuario y/o correo ya existe"
+                    setTimeout(function () {
+                        $state.transitionTo('home.login');
+                    }, 1500)
+                }
             });
+    }
+    $scope.login = function() {
+        $state.transitionTo('home.login');
     }
 });

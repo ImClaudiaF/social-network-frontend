@@ -35,10 +35,5 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'views/photos.html',
             controller: 'photosController'
         })
-        // .state('home.takePic', {
-        //     url: '/takePic',
-        //     templateUrl: 'views/takePic.html',
-        //     controller: 'takePicController'
-        // })
     $urlRouterProvider.otherwise('home');
 });

@@ -1,6 +1,14 @@
 app.controller('home2Controller', function($http, $scope, $state){
-	// $scope.init = function() {
-	// 	if(localStorage.length==2)
-	// 		$state.transitionTo('home2.login');
-	// }
+	$scope.upload = function() {
+        $state.transitionTo('home.home2.upload');
+    };
+    $scope.profile = function() {
+        $state.transitionTo('home.home2.profile');
+    };
+    $scope.photos = function() {
+        $state.transitionTo('home.home2.photos');
+    };
+    $scope.hola = function(){
+    	alert();
+    }
 });
