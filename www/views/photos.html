@@ -9,7 +9,7 @@
                     <h6> {{upload.publish_location}}</h6><br>
                     <img class="img-responsive" ng-src="{{upload.mediaUrl}}"><br>
                     <div ng-if="upload.likes_user==0">
-                        <span class="glyphicon glyphicon-heart-empty" aria-hidden="true" ng-click="likes(upload.publish_id)" style="font-size: 1.3em">{{upload.likes}}</span>
+                        <span id="{{upload.publish_id}}" class="glyphicon glyphicon-heart" aria-hidden="true" ng-click="likes(upload.publish_id)" style="font-size: 1.3em"><p id="{{upload.publish_id}}" style="display: inline">{{upload.likes}}</p></span>
                         <h6 style="float: right"> {{upload.publish_date}}</h6>
                     </div>
                     <div ng-if="upload.likes_user==1">
@@ -28,7 +28,7 @@
                     <h6> {{upload.publish_location}}</h6><br>
                     <video controls ng-src="{{upload.mediaUrl}}" style="width: 100%; height: auto"></video><br>
                     <div ng-if="upload.likes_user==0">
-                        <span class="glyphicon glyphicon-heart-empty" aria-hidden="true" ng-click="likes(upload.publish_id)" style="font-size: 1.3em">{{upload.likes}}</span>
+                        <span id="heart" class="glyphicon glyphicon-heart-empty" aria-hidden="true" ng-click="likes(upload.publish_id)" style="font-size: 1.3em">{{upload.likes}}</span>
                         <h6 style="float: right"> {{upload.publish_date}}</h6>
                     </div>
                     <div ng-if="upload.likes_user==1">

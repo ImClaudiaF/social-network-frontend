@@ -2,6 +2,7 @@ var div = document.getElementById('div');
 var pg = 1, tpg;
 var mediaUrl = [];
 var flag = false;
+var heart, li;
 app.controller('photosController', function($http, $scope, $state, $sce) {
     $scope.loadP = function() {
             flag = true;
@@ -46,6 +47,10 @@ app.controller('photosController', function($http, $scope, $state, $sce) {
             console.log(pg);
         },
         $scope.likes = function(id) {
+             heart = document.getElementById(id);  
+             heart.style.color = "red";
+             p = document.getElementById(id);  
+             heart.style.color = "red";
             var params = {
                 id: id,
                 token: localStorage.getItem('token')
@@ -53,7 +58,8 @@ app.controller('photosController', function($http, $scope, $state, $sce) {
             $http.post("http://192.168.1.137:10000/likes", params)
                 .success(function(data) {
                     console.log(data);
-                    $scope.lik = data.quantity;
+                    $scope.lik = data.likes[0].likes;
+                    p.innerHTML = data.likes[0].likes;
                 });
         }
 });
