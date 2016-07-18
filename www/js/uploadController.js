@@ -13,15 +13,17 @@ app.controller('uploadController', function($http, $scope, $state) {
                 enableHighAccuracy: true,
                 maximumAge: 3600000
             }
-            var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
 
             function onSuccess(position) {
                 geo = position.coords.latitude + ', ' + position.coords.longitude;
+                alert(geo);
             };
 
             function onError(error) {
-                alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+                alert('Activate your geolocation!!');
             }
+
+            navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
         }
     }
     $scope.uploadFile = function() {
@@ -50,7 +52,7 @@ app.controller('uploadController', function($http, $scope, $state) {
                 $scope.status = data.status;
                 setTimeout(function() {
                     $state.transitionTo('home.home2.profile');
-                }, 2000);
+                }, 1000);
             });
     }
     $scope.takePicture = function() {
@@ -121,7 +123,7 @@ app.controller('uploadController', function($http, $scope, $state) {
                 $scope.status = data.status;
                 setTimeout(function() {
                     $state.transitionTo('home.home2.profile');
-                }, 2000);
+                }, 1000);
             });
         //$scope.$apply();
     }

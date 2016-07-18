@@ -20,8 +20,8 @@ app.controller('photosController', function($http, $scope, $state, $sce) {
                     });
                 });
             setTimeout(function() {
-                tpg = (parseInt(tpg/5))+1;
-                console.log(tpg)
+                tpg = tpg/5;
+            }, 1000);
                 if(flag===true){
                     document.onscroll = function(ev) {
                         if (pg < tpg) {
@@ -37,13 +37,14 @@ app.controller('photosController', function($http, $scope, $state, $sce) {
                                         });
                                     });
                                 pg++;
+                                console.log('tpg' + tpg);
                                 console.log('pg' + pg);
                                 window.scrollTo(0, 0);
                             }
                         }
                     }
                 }
-            }, 3000);
+            
             console.log(pg);
         },
         $scope.likes = function(id) {
